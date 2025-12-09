@@ -23,16 +23,13 @@ const Index = () => {
 
       {/* Content */}
       <div className="relative">
-        <Header
-          logo={{ initials: 'MT', name: 'Portfolio' }}
-          onResumeClick={() => alert('Resume download coming soon!')}
-        />
+        <Header logo={{ initials: 'MT', name: 'Portfolio' }} />
 
         <div className="divider" />
 
         <Hero
-          titleLine1="Creative Developer &"
-          titleLine2="Digital Designer"
+          titleLine1="Crafting Ideas into Digital Experiences"
+          titleLine2=""
           subtitle="I craft beautiful digital experiences through code and design. Specializing in modern web development, UI/UX design, and bringing innovative ideas to life."
           onPrimaryClick={handleScrollToProjects}
           onSecondaryClick={handleScrollToContact}

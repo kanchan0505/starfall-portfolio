@@ -9,7 +9,7 @@ const Footer: React.FC = () => {
         <div className="divider mb-8" />
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-muted-foreground text-sm inter-font">
-            © {currentYear} Portfolio. Built with passion and code.
+            Kanchan Sharma Portfolio. Built with passion and code.
           </p>
           <div className="flex items-center gap-6">
             <a

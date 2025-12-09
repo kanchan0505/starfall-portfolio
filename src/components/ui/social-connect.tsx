@@ -1,5 +1,5 @@
 import React from 'react';
-import { Github, Linkedin, Mail, Twitter } from 'lucide-react';
+import { Github, Linkedin, Mail } from 'lucide-react';
 
 interface SocialLink {
   icon: React.ReactNode;
@@ -13,28 +13,21 @@ const socialLinks: SocialLink[] = [
   {
     icon: <Github className="w-8 h-8" />,
     label: 'GitHub',
-    href: '#',
+    href: 'https://github.com/Kanchan0505',
     hoverBg: 'hover:bg-foreground/10',
     hoverShadow: 'hover:shadow-[0_0_20px_rgba(255,255,255,0.3)]'
   },
   {
     icon: <Linkedin className="w-8 h-8" />,
     label: 'LinkedIn',
-    href: '#',
+    href: 'https://linkedin.com/in/kanchan-sharma-ba980828b',
     hoverBg: 'hover:bg-[#0077b5]',
     hoverShadow: 'hover:shadow-[0_0_20px_rgba(0,119,181,0.6)]'
   },
   {
-    icon: <Twitter className="w-8 h-8" />,
-    label: 'Twitter',
-    href: '#',
-    hoverBg: 'hover:bg-[#1DA1F2]',
-    hoverShadow: 'hover:shadow-[0_0_20px_rgba(29,161,242,0.6)]'
-  },
-  {
     icon: <Mail className="w-8 h-8" />,
     label: 'Email',
-    href: '#',
+    href: 'mailto:kanchan.sharma@cdgi.edu.in',
     hoverBg: 'hover:bg-primary',
     hoverShadow: 'hover:shadow-[0_0_20px_rgba(6,182,212,0.6)]'
   }
@@ -60,28 +53,35 @@ const SocialConnect: React.FC = () => {
             }}
           >
             <div className="flex flex-wrap justify-center gap-8">
-              {socialLinks.map((social) => (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  className="group flex flex-col items-center"
-                >
-                  <div 
-                    className={`
-                      w-20 h-20 rounded-full flex items-center justify-center
-                      bg-muted/50 backdrop-blur-sm border border-border/50
-                      transition-all duration-300 text-foreground
-                      ${social.hoverBg} ${social.hoverShadow}
-                      group-hover:-translate-y-2 group-hover:scale-110
-                    `}
+              {socialLinks.map((social) => {
+                const isMail = social.href.startsWith('mailto:');
+                return (
+                  <a
+                    key={social.label}
+                    href={social.href}
+                    className="group flex flex-col items-center"
+                    target={isMail ? undefined : '_blank'}
+                    rel={isMail ? undefined : 'noopener noreferrer'}
+                    aria-label={social.label}
+                    title={social.label}
                   >
-                    {social.icon}
-                  </div>
-                  <span className="mt-3 text-muted-foreground text-sm font-medium transition-all duration-300 group-hover:text-foreground inter-font">
-                    {social.label}
-                  </span>
-                </a>
-              ))}
+                    <div
+                      className={`
+                        w-20 h-20 rounded-full flex items-center justify-center
+                        bg-muted/50 backdrop-blur-sm border border-border/50
+                        transition-all duration-300 text-foreground
+                        ${social.hoverBg} ${social.hoverShadow}
+                        group-hover:-translate-y-2 group-hover:scale-110
+                      `}
+                    >
+                      {social.icon}
+                    </div>
+                    <span className="mt-3 text-muted-foreground text-sm font-medium transition-all duration-300 group-hover:text-foreground inter-font">
+                      {social.label}
+                    </span>
+                  </a>
+                );
+              })}
             </div>
           </div>
         </div>

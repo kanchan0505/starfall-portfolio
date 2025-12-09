@@ -11,15 +11,11 @@ interface AboutProps {
   description?: string;
 }
 
-const defaultStats: Stat[] = [
-  { value: '50+', label: 'Projects Completed' },
-  { value: '5+', label: 'Years Experience' },
-  { value: '15+', label: 'Happy Clients' },
-];
+const defaultStats: Stat[] = [];
 
 const About: React.FC<AboutProps> = ({
   stats = defaultStats,
-  description = "I'm a passionate developer who loves turning complex problems into elegant solutions. With expertise in modern web technologies, I focus on creating performant, accessible, and visually stunning applications.",
+  description = "Hi, I’m Kanchan Sharma, a first-year Computer Science student with a strong passion for building practical and engaging digital experiences. I enjoy transforming ideas into real products — from collaborative platforms and finance trackers to creative visualization tools. I love experimenting with new concepts, exploring how things work, and continuously improving myself by working on different projects.",
 }) => {
   const highlights = [
     {
@@ -71,25 +67,29 @@ const About: React.FC<AboutProps> = ({
           ))}
         </div>
 
-        {/* Stats */}
-        <div className="divider mb-12" />
-        <div className="flex flex-col sm:flex-row justify-center items-center gap-8 text-center">
-          {stats.map((stat, index) => (
-            <React.Fragment key={stat.label}>
-              <div className="group">
-                <div className="text-4xl md:text-5xl font-light text-foreground mb-2 geist-font tracking-tight group-hover:text-primary transition-colors">
-                  {stat.value}
-                </div>
-                <div className="text-muted-foreground text-sm inter-font font-normal">
-                  {stat.label}
-                </div>
-              </div>
-              {index < stats.length - 1 && (
-                <div className="hidden sm:block w-px h-16 bg-gradient-to-b from-transparent via-border to-transparent" />
-              )}
-            </React.Fragment>
-          ))}
-        </div>
+        {/* Stats (render only when provided) */}
+        {stats && stats.length > 0 && (
+          <>
+            <div className="divider mb-12" />
+            <div className="flex flex-col sm:flex-row justify-center items-center gap-8 text-center">
+              {stats.map((stat, index) => (
+                <React.Fragment key={stat.label}>
+                  <div className="group">
+                    <div className="text-4xl md:text-5xl font-light text-foreground mb-2 geist-font tracking-tight group-hover:text-primary transition-colors">
+                      {stat.value}
+                    </div>
+                    <div className="text-muted-foreground text-sm inter-font font-normal">
+                      {stat.label}
+                    </div>
+                  </div>
+                  {index < stats.length - 1 && (
+                    <div className="hidden sm:block w-px h-16 bg-gradient-to-b from-transparent via-border to-transparent" />
+                  )}
+                </React.Fragment>
+              ))}
+            </div>
+          </>
+        )}
       </div>
     </section>
   );

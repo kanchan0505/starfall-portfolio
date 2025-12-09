@@ -11,8 +11,8 @@ interface HeroProps {
 }
 
 const Hero: React.FC<HeroProps> = ({
-  titleLine1 = 'Creative Developer &',
-  titleLine2 = 'Digital Designer',
+  titleLine1 = 'Crafting Ideas into Digital Experiences',
+  titleLine2 = '',
   subtitle = 'I craft beautiful digital experiences through code and design. Specializing in modern web development, UI/UX design, and bringing innovative ideas to life.',
   primaryButtonLabel = 'View My Work',
   secondaryButtonLabel = 'Get In Touch',

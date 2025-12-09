@@ -6,6 +6,7 @@ interface Project {
   description: string;
   tags: string[];
   imageUrl?: string;
+  href?: string;
 }
 
 interface ProjectsProps {
@@ -14,19 +15,25 @@ interface ProjectsProps {
 
 const defaultProjects: Project[] = [
   {
-    title: 'FinTech Mobile App',
-    description: 'React Native app with AI-powered financial insights and real-time market data.',
-    tags: ['React Native', 'Node.js', 'AI'],
+    title: 'Sorting Omega',
+    description: 'Visualizer for sorting algorithms, trees, and graphs.',
+    tags: ['TypeScript', 'React'],
+    imageUrl: '/images/S002.jpg',
+    href: 'https://sort-omega.vercel.app',
   },
   {
-    title: 'Data Visualization Platform',
-    description: 'Interactive dashboard for complex data analysis with beautiful charts.',
-    tags: ['D3.js', 'Python', 'MongoDB'],
+    title: 'Fee Management System',
+    description: 'Fee management system built for a government school to handle collections and records.',
+    tags: ['Next.js', 'MUI', 'Postgres'],
+    imageUrl: '/images/S003.jpg',
+    href: 'https://nextjs-feemanagement.vercel.app/',
   },
   {
-    title: '3D Portfolio Experience',
-    description: 'Immersive WebGL experience with stunning 3D elements and animations.',
-    tags: ['Three.js', 'WebGL', 'React'],
+    title: 'Course Outcome & SAR Generation',
+    description: 'Marking software with CO–PO mapping for SAR report generation (private).',
+    tags: ['Next.js', 'MUI', 'Postgres'],
+    imageUrl: '/images/S004.jpg',
+    // private project — no public link
   },
 ];
 
@@ -46,40 +53,65 @@ const Projects: React.FC<ProjectsProps> = ({
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((project, index) => (
-            <div
-              key={index}
-              className="glass-card rounded-2xl p-6 text-left group cursor-pointer transition-all duration-300 hover:-translate-y-2"
-            >
-              {/* Project Image Placeholder */}
-              <div className="project-image rounded-xl h-40 mb-4 flex items-center justify-center overflow-hidden relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20" />
-                <div className="text-4xl opacity-50 group-hover:scale-110 transition-transform">
-                  💼
-                </div>
-                <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
-                  <ExternalLink className="w-5 h-5 text-foreground" />
-                </div>
-              </div>
+          {projects.map((project, index) => {
+            const CardTag: any = project.href ? 'a' : 'div';
+            const cardProps = project.href
+              ? { href: project.href, target: '_blank', rel: 'noopener noreferrer' }
+              : {};
 
-              <h3 className="text-lg font-semibold text-foreground mb-2 geist-font group-hover:text-primary transition-colors">
-                {project.title}
-              </h3>
-              <p className="text-muted-foreground text-sm inter-font mb-4 leading-relaxed">
-                {project.description}
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {project.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="skill-badge px-3 py-1 rounded-full text-xs text-muted-foreground inter-font"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </div>
-          ))}
+            return (
+              <CardTag
+                {...cardProps}
+                key={index}
+                className="glass-card rounded-2xl p-6 text-left group cursor-pointer transition-all duration-300 hover:-translate-y-2"
+                aria-label={project.title}
+              >
+                {/* Project Image */}
+                <div className="project-image rounded-xl h-40 mb-4 flex items-center justify-center overflow-hidden relative bg-muted/5">
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20" />
+                  {project.imageUrl ? (
+                    // image path assumed in `public/images/...` (use provided paths)
+                    <img
+                      src={project.imageUrl}
+                      alt={`${project.title} screenshot`}
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                      onError={(e) => {
+                        // hide image element if not found
+                        const el = e.currentTarget as HTMLImageElement;
+                        el.style.display = 'none';
+                      }}
+                    />
+                  ) : (
+                    <div className="text-4xl opacity-50 group-hover:scale-110 transition-transform">💼</div>
+                  )}
+
+                  {project.href && (
+                    <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                      <ExternalLink className="w-5 h-5 text-foreground" />
+                    </div>
+                  )}
+                </div>
+
+                <h3 className="text-lg font-semibold text-foreground mb-2 geist-font group-hover:text-primary transition-colors">
+                  {project.title}
+                </h3>
+                <p className="text-muted-foreground text-sm inter-font mb-4 leading-relaxed">
+                  {project.description}
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {project.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="skill-badge px-3 py-1 rounded-full text-xs text-muted-foreground inter-font"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </CardTag>
+            );
+          })}
         </div>
       </div>
     </section>

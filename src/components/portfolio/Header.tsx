@@ -13,6 +13,7 @@ interface HeaderProps {
   navLinks?: NavLink[];
   resumeLabel?: string;
   onResumeClick?: () => void;
+  resumeHref?: string;
 }
 
 const defaultNavLinks: NavLink[] = [
@@ -23,20 +24,17 @@ const defaultNavLinks: NavLink[] = [
 ];
 
 const Header: React.FC<HeaderProps> = ({
-  logo = { initials: 'MT', name: 'Portfolio' },
+  logo = {  name: 'Portfolio' },
   navLinks = defaultNavLinks,
   resumeLabel = 'Resume',
   onResumeClick,
+  resumeHref = '/images/kanchan-sharma%20(3).pdf',
 }) => {
   return (
     <nav className="w-full px-6 py-4 relative z-20">
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         <div className="flex items-center space-x-2">
-          <div className="w-10 h-10 rounded-lg bg-muted/80 backdrop-blur-md border border-border/50 flex items-center justify-center">
-            <span className="geist-font text-sm font-bold text-foreground">
-              {logo.initials}
-            </span>
-          </div>
+          
           <span className="geist-font text-lg font-medium text-foreground">
             {logo.name}
           </span>
@@ -55,12 +53,20 @@ const Header: React.FC<HeaderProps> = ({
           ))}
         </div>
 
-        <button
-          onClick={onResumeClick}
+        <a
+          href={resumeHref}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={(e) => {
+            if (onResumeClick) {
+              e.preventDefault();
+              onResumeClick();
+            }
+          }}
           className="glass-button px-4 py-2 rounded-lg text-foreground text-sm font-medium inter-font"
         >
           {resumeLabel}
-        </button>
+        </a>
       </div>
     </nav>
   );
