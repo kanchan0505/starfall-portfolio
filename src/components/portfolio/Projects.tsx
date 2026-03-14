@@ -35,6 +35,13 @@ const defaultProjects: Project[] = [
     imageUrl: '/images/S004.jpg',
     // private project — no public link
   },
+    {
+    title: 'Jwellery Website for Balaji Jwellers',
+    description: 'Ecommerce website with payment gateway +shipping integration via Shiprocket for balaji jwellers Indore ',
+    tags: ['Next.js', 'MUI', 'Postgres'],
+    imageUrl: '/images/S005.jpg',
+    // private project — no public link
+  }
 ];
 
 const Projects: React.FC<ProjectsProps> = ({
