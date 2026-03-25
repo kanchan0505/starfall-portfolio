@@ -42,6 +42,15 @@ const defaultProjects: Project[] = [
     imageUrl: '/images/S005.jpg',
     // private project — no public link
   }
+   {
+    title: 'Event Management Website - Citronics',
+    description: 'Developed a full-stack event management website for a national-level techno-management fest, enabling event listings, registrations, and user engagement on a centralized platform. ',
+    tags: ['Next.js', 'MUI', 'Postgres'],
+    imageUrl: '/images/s0011.png',
+      href: 'https://www.cdgicitronics.in',
+    // private project — no public link
+  }
+  
 ];
 
 const Projects: React.FC<ProjectsProps> = ({
