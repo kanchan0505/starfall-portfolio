@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState, memo } from 'react';
 
-type IconType = 'react' | 'nextjs' | 'sql' | 'mongodb' | 'nodejs' | 'cpp';
+type IconType = 'react' | 'nextjs' | 'sql' | 'mongodb' | 'nodejs' | 'cpp' | 'fastapi';
 type GlowColor = 'cyan' | 'purple';
 
 interface SkillIconProps {
@@ -84,7 +84,16 @@ const iconComponents: Record<IconType, { component: () => React.JSX.Element; col
       </svg>
     ),
     color: '#00599C'
-  }
+  },
+  fastapi: {
+  component: () => (
+    <svg viewBox="0 0 24 24" fill="none" className="w-full h-full">
+      <path d="M12 0L3 24h6l1.5-4h6L18 24h6L12 0z" fill="#009688"/>
+      <path d="M12 6l3.5 9h-7L12 6z" fill="#ffffff"/>
+    </svg>
+  ),
+  color: '#009688'
+},
 };
 
 const SkillIcon = memo(({ type }: SkillIconProps) => {
@@ -157,6 +166,16 @@ const skillsConfig: SkillConfig[] = [
     glowColor: 'purple',
     label: 'C/C++'
   },
+  { 
+  id: 'fastapi',
+  orbitRadius: 180, 
+  size: 45, 
+  speed: -0.6, 
+  iconType: 'fastapi', 
+  phaseShift: Math.PI / 2, 
+  glowColor: 'purple',
+  label: 'FastAPI'
+},
 ];
 
 const OrbitingSkill = memo(({ config, angle }: OrbitingSkillProps) => {
