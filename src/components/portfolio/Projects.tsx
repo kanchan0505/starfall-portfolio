@@ -41,7 +41,7 @@ const defaultProjects: Project[] = [
     tags: ['Next.js', 'MUI', 'Postgres'],
     imageUrl: '/images/S005.jpg',
     // private project — no public link
-  }
+  },
    {
     title: 'Event Management Website - Citronics',
     description: 'Developed a full-stack event management website for a national-level techno-management fest, enabling event listings, registrations, and user engagement on a centralized platform. ',
