@@ -28,7 +28,7 @@ const Header: React.FC<HeaderProps> = ({
   navLinks = defaultNavLinks,
   resumeLabel = 'Resume',
   onResumeClick,
-  resumeHref = '/images/kanchanShama.pdf',
+  resumeHref = '/images/kanchanSharma_resume copy.pdf.pdf',
 }) => {
   return (
     <nav className="w-full px-6 py-4 relative z-20">
